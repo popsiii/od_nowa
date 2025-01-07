@@ -103,7 +103,7 @@ def osoba_search(request,substring) :
     return Response(serializer.data)
 
 
-@api_view(['GET', 'DELETE'])
+@api_view(['GET', 'POST'])
 def stanowisko_list(request):
     if request.method == 'GET' :
         stanowiska = Stanowisko.objects.all()
@@ -117,7 +117,7 @@ def stanowisko_list(request):
             return Response(serializer.data, status = status.HTTP_201_CREATED)
         return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
     
-@api_view(['GET', 'PUT', 'DELETE']) 
+@api_view(['GET', 'PUT',  'DELETE']) 
 def stanowisko_detail(request, pk):
     try: 
         stanowisko = Stanowisko.objects.get(pk = pk)

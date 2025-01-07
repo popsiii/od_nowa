@@ -1,3 +1,4 @@
+from datetime import date
 from django.db import models
 
 # Create your models here.
@@ -47,7 +48,7 @@ class Osoba(models.Model):
     nazwisko = models.CharField(max_length = 60, blank = False, null= False)
     plec = models.IntegerField(choices = PLCIE.choices, default= PLCIE.choices[2][0]) 
     stanowisko = models.ForeignKey("Stanowisko", on_delete = models.CASCADE, null = True, blank = True)
-    data_dodania = models.DateTimeField (auto_now_add = True, editable= False)
+    data_dodania = models.DateField (default = date.today, blank = False, null = False )
     
 
     def __str__(self):

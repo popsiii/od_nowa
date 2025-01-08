@@ -1,18 +1,4 @@
 from django.shortcuts import render
-
-# Create your views here.
-
-
-def welcome_view(request):
-    now = datetime.datetime.now()
-    html = f"""
-        <html><body>
-        Witaj użytkowniku! </br>
-        Aktualna data i czas na serwerze: {now}.
-        </body></html>"""
-    return HttpResponse(html)
-
-from django.shortcuts import render
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -20,6 +6,7 @@ from .models import Osoba, Person, Stanowisko, Team
 from .serializers import OsobaSerializer, PersonSerializer, StanowiskoSerializer
 from datetime import datetime
 from rest_framework.views import APIView 
+
 
 # określamy dostępne metody żądania dla tego endpointu
 @api_view(['GET'])
@@ -172,6 +159,4 @@ class OsobaDetail(APIView):
             return Response(status = status.HTTP_404_NOT_FOUND)
          osoba.delete()
          return Response(status = status.HTTP_204_NO_CONTENT)
-    
-
     
